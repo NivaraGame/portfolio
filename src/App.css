@@ -528,7 +528,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   width: 100%;
 }
 
-.proj-img:hover .proj-txtx {
+.proj-img:hover .proj-txt {
   top: 50%;
   opacity: 1;
 }

@@ -4,7 +4,7 @@ import colorSharp from "../assets/img/color-sharp2.png"
 import projImg1 from "../assets/img/project-img1.png"
 import projImg2 from "../assets/img/project-img2.png"
 import projImg3 from "../assets/img/project-img3.png"
-import { useState } from "react"
+import TrackVisibility from 'react-on-screen';
 
 const Projects = () => {
     const projects = [
@@ -39,54 +39,58 @@ const Projects = () => {
             imgUrl: projImg3,
         },
     ]
-    const [isVisible, setIsVisible] = useState(true)
 
     return (
         <section className="project" id="projects">
             <Container>
                 <Row>
-                    <Col>
-                        <h2>Projects</h2>
-                        <p>Lorem ut pariatur nulla velit laborum ea. Tempor incididunt commodo deserunt excepteur reprehenderit pariatur Lorem laborum irure nostrud. Tempor dolor eu consectetur ex cupidatat mollit exercitation Lorem pariatur aliqua minim. Cupidatat adipisicing pariatur sit culpa nisi nostrud pariatur amet cupidatat adipisicing ea proident nostrud eiusmod. Cupidatat cillum irure culpa ad ut dolor. Aute cillum veniam aliquip do sit quis et tempor eu consectetur.</p>
+                    <Col size={12}>
+                        <TrackVisibility>
+                            {({ isVisible }) =>
+                                <div className={isVisible ? "animate__animated animate__fadeIn" : ""}>
+                                    <h2>Projects</h2>
+                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                                    <Tab.Container id="projects-tabs" defaultActiveKey="first">
+                                        <Nav variant="pills" className="nav-pills mb-5 justify-content-center align-items-center" id="pills-tab">
+                                            <Nav.Item>
+                                                <Nav.Link eventKey="first">Tab 1</Nav.Link>
+                                            </Nav.Item>
+                                            <Nav.Item>
+                                                <Nav.Link eventKey="second">Tab 2</Nav.Link>
+                                            </Nav.Item>
+                                            <Nav.Item>
+                                                <Nav.Link eventKey="third">Tab 3</Nav.Link>
+                                            </Nav.Item>
+                                        </Nav>
+                                        <Tab.Content id="slideInUp" className={isVisible ? "animate__animated animate__slideInUp" : ""}>
+                                            <Tab.Pane eventKey="first">
+                                                <Row>
+                                                    {
+                                                        projects.map((project, index) => {
+                                                            return (
+                                                                <ProjectCard
+                                                                    key={index}
+                                                                    {...project}
+                                                                />
+                                                            )
+                                                        })
+                                                    }
+                                                </Row>
+                                            </Tab.Pane>
+                                            <Tab.Pane eventKey="section">
+                                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque quam, quod neque provident velit, rem explicabo excepturi id illo molestiae blanditiis, eligendi dicta officiis asperiores delectus quasi inventore debitis quo.</p>
+                                            </Tab.Pane>
+                                            <Tab.Pane eventKey="third">
+                                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque quam, quod neque provident velit, rem explicabo excepturi id illo molestiae blanditiis, eligendi dicta officiis asperiores delectus quasi inventore debitis quo.</p>
+                                            </Tab.Pane>
+                                        </Tab.Content>
+                                    </Tab.Container>
+                                </div>}
+                        </TrackVisibility>
                     </Col>
                 </Row>
-                <Tab.Container id="project-tabs" defaultActiveKey={"first"}>
-                    <Nav variant="tabs" defaultActiveKey="/home">
-                        <Nav.Item>
-                            <Nav.Link eventKey="first">Tab one</Nav.Link>
-                        </Nav.Item>
-                        <Nav.Item>
-                            <Nav.Link eventKey="second">Tab two</Nav.Link>
-                        </Nav.Item>
-                        <Nav.Item>
-                            <Nav.Link eventKey="third">Tab three</Nav.Link>
-                        </Nav.Item>
-                    </Nav>
-                    <Tab.Content id="slideInUp" className={isVisible ? "animate__animated animate__slideInUp" : ""}>
-                        <Tab.Pane eventKey={"first"}>
-                            <Row>
-
-                                {
-                                    projects.map((project, index) => {
-                                        return (
-                                            <ProjectCard key={index}
-                                                {...project}
-                                            />
-                                        )
-                                    })
-                                }
-                            </Row>
-                        </Tab.Pane>
-                        <Tab.Pane eventKey={"second"}>
-                            <p>Eu laborum consequat aliqua nisi esse veniam amet nostrud voluptate consectetur eu cupidatat aute. Sit id ullamco ex ad nisi. Sint anim veniam minim commodo culpa deserunt do.</p>
-                        </Tab.Pane>
-                        <Tab.Pane eventKey={"third"}>
-                            <p>Duis deserunt irure duis dolore ut ea proident irure amet in ipsum id amet sint. Ipsum nostrud esse dolor dolore aute dolore duis deserunt qui. Nulla fugiat sunt duis ea cillum veniam. Commodo anim velit sit nisi labore officia minim tempor.</p>
-                        </Tab.Pane>
-                    </Tab.Content>
-                </Tab.Container>
             </Container>
-            <img className="background-image-right" src={colorSharp} />
+            <img className="background-image-right" src={colorSharp}></img>
         </section>
     )
 }
