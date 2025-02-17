@@ -4,6 +4,10 @@ import "react-multi-carousel/lib/styles.css";
 import meter1 from "../assets/img/meter1.svg"
 import meter2 from "../assets/img/meter2.svg"
 import meter3 from "../assets/img/meter3.svg"
+import colorSharp from "../assets/img/color-sharp.png"
+import arrow1 from "../assets/img/arrow1.svg"
+import arrow2 from "../assets/img/arrow2.svg"
+// import colorSharp from "../assets/img/color-sharp2.png"
 
 const Skills = () => {
     const responsive = {
@@ -25,8 +29,9 @@ const Skills = () => {
             items: 1
         }
     };
+
     return (
-        <section className="skill" id="skill">
+        <section className="skill" id="skills">
             <Container>
                 <Row>
                     <Col>
@@ -39,7 +44,7 @@ const Skills = () => {
                 <Carousel responsive={responsive} infinite={true} className="skill-slider">
                     <div className="item">
                         <img src={meter1} alt="" />
-                        <h5>Web Development</h5>
+                        <h5>Front-end Development</h5>
                     </div>
                     <div className="item">
                         <img src={meter2} alt="" />
@@ -53,16 +58,9 @@ const Skills = () => {
                         <img src={meter1} alt="" />
                         <h5>Web Development</h5>
                     </div>
-                    <div className="item">
-                        <img src={meter2} alt="" />
-                        <h5>Web Development</h5>
-                    </div>
-                    <div className="item">
-                        <img src={meter3} alt="" />
-                        <h5>Web Development</h5>
-                    </div>
                 </Carousel>
             </Container>
+            <img className="background-image-left" src={colorSharp} alt="" />
         </section>
     )
 }
